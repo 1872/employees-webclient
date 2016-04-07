@@ -1,0 +1,18 @@
+<h1>Edit the employee!</h1>
+<%= form_tag "/employees/#{@employee['id']}", method: :patch do %>
+  <div>
+    <%= label_tag :input_form_first_name %>
+    <%= text_field_tag :input_form_first_name, @employee["firstName"] %>
+  </div>
+  <div>
+    <%= label_tag :input_form_last_name %>
+    <%= text_field_tag :input_form_last_name, @employee["lastName"] %>
+  </div>
+  <div>
+    <%= label_tag :input_form_email %>
+    <%= text_field_tag :input_form_email, @employee["email"] %>
+  </div>
+  <div>
+    <%= submit_tag "Create Employee" %>
+  </div>
+<% end %>

@@ -1,3 +1,9 @@
 <h2>Employee info</h2>
-<h3>Name: <%= @employee["firstName"] %> <%= @employee["lastName"] %></h3>
-<p>Email: <%= @employee["email"] %></p>
+<h3>Name: <%= @employee.first_name %> <%= @employee.last_name %></h3>
+<p>Email: <%= @employee.email %></p>
+<div>
+  <%= link_to "Edit", "/employees/#{@employee.id}/edit" %>
+</div>
+<div>
+  <%= link_to "Delete", "/employees/#{@employee.id}", method: :delete %>
+</div>
