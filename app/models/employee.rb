@@ -13,4 +13,13 @@ class Employee
   def fancy_name
     "#{first_name} #{last_name}, Esquire"
   end
+
+  def self.all
+  end
+
+  def self.find_by(input_options)
+    id = input_options[:id]
+    employee_hash = Unirest.get("http://localhost:3000/api/v1/employees/#{id}.json").body
+    Employee.new(employee_hash)
+  end
 end
