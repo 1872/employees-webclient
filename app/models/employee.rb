@@ -9,4 +9,8 @@ class Employee
     @birthdate = input_options["birthDate"]
     @addresses = input_options["theAddresses"]
   end
+
+  def fancy_name
+    "#{first_name} #{last_name}, Esquire"
+  end
 end
