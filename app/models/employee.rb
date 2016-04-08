@@ -15,6 +15,12 @@ class Employee
   end
 
   def self.all
+    employee_hashes = Unirest.get("http://localhost:3000/api/v1/employees.json").body
+    employees = []
+    employee_hashes.each do |employee_hash|
+      employees << Employee.new(employee_hash)
+    end
+    employees
   end
 
   def self.find_by(input_options)

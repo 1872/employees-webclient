@@ -1,10 +1,5 @@
 class EmployeesController < ApplicationController
   def index
-    # employee_hashes = Unirest.get("http://localhost:3000/api/v1/employees.json").body
-    # @employees = []
-    # employee_hashes.each do |employee_hash|
-    #   @employees << Employee.new(employee_hash)
-    # end
     @employees = Employee.all
     render "index.html.erb"
   end
