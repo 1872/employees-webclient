@@ -14,6 +14,19 @@ class Employee
     "#{first_name} #{last_name}, Esquire"
   end
 
+  def update(input_options)
+    employee_hash = Unirest.patch(
+      "http://localhost:3000/api/v1/employees/#{id}.json",
+      headers: { "Accept" => "application/json" },
+      parameters: input_options
+    ).body
+    Employee.new(employee_hash)
+  end
+
+  def destroy
+    Unirest.delete("http://localhost:3000/api/v1/employees/#{id}.json")
+  end
+
   def self.all
     employee_hashes = Unirest.get("http://localhost:3000/api/v1/employees.json").body
     employees = []
@@ -26,6 +39,15 @@ class Employee
   def self.find_by(input_options)
     id = input_options[:id]
     employee_hash = Unirest.get("http://localhost:3000/api/v1/employees/#{id}.json").body
+    Employee.new(employee_hash)
+  end
+
+  def self.create(input_options)
+    employee_hash = Unirest.post(
+      "http://localhost:3000/api/v1/employees",
+      headers: { "Accept" => "application/json" },
+      parameters: input_options
+    ).body
     Employee.new(employee_hash)
   end
 end
